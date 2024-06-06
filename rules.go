@@ -69,6 +69,18 @@ func updateBoard() {
 	}
 }
 
+func checkIfAllDead() bool {
+	num_of_alive := 0
+	for i := 0; i < len(BOARD); i++ {
+		for j := 0; j < len(BOARD[0]); j++ {
+			if BOARD[i][j] == 1 {
+				num_of_alive += 1
+			}
+		}
+	}
+	return num_of_alive > 0
+}
+
 func printBoard(iter int) {
 	fmt.Printf(" ------Iter:%v------\n", iter)
 	for i := 0; i < len(BOARD); i++ {

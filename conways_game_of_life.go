@@ -4,15 +4,21 @@ import (
 	"time"
 )
 
-func gameTick(times int) {
+func gameTick() {
 	setUpBoard()
-	for i := 0; i < times; i++ {
-		printBoard(i + 1)
-		time.Sleep(10 * time.Millisecond)
+	i := 0
+	for {
+		printBoard(i)
 		updateBoard()
+		all_dead := checkIfAllDead()
+		if !all_dead {
+			break
+		}
+		time.Sleep(10 * time.Millisecond)
+		i += 1
 	}
 }
 
 func main() {
-	gameTick(10)
+	gameTick()
 }
